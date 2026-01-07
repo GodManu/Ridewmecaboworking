@@ -1,0 +1,38 @@
+/* MOBILE EXTRA TWEAKS */
+@media (max-width: 900px) {
+
+  .new-header {
+    height: 47vh;
+    min-height: 47vh;
+    overflow: hidden;
+  }
+
+  .header-content {
+    margin-bottom: 90px;
+    padding: 0 14px;
+  }
+
+  .header-content h1 {
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+  }
+
+  .header-expedition {
+    width: 120%;
+    bottom: -40px;
+  }
+
+  .vehicle-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .vehicle-text .section-title,
+  .vehicle-text .section-subtitle {
+    text-align: center;
+  }
+
+  .booking-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

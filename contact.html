@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Ride W Me Cabo</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/mobile.css">
+  <link rel="icon" type="image/png" href="Images/ridewmelogo.png">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="new-header inner-header">
+    <div class="header-overlay"></div>
+    <img src="Images/expeditionavion.jpg" alt="Luxury SUV" class="header-expedition">
+
+    <div class="header-top">
+      <div class="logo-text">¡RIDE W ME! 🐳</div>
+      <div class="menu-icon" id="openMenu">☰</div>
+    </div>
+
+    <div class="header-content">
+      <h1>Contact Us</h1>
+      <p>We will respond as soon as possible.</p>
+    </div>
+  </header>
+
+  <!-- SIDE MENU -->
+  <div id="sideMenu" class="side-menu">
+    <div class="close-btn" id="closeMenu">×</div>
+    <nav class="side-menu-links">
+      <a href="index.html">Home 🏠︎</a>
+      <a href="services.html">Services 📚</a>
+      <a href="booking.html">Book Now 📌</a>
+      <a href="contact.html">Contact Us 📲</a>
+      <a href="admin.html">Admin Panel 👨🏻‍💻</a>
+    </nav>
+  </div>
+  <div id="menuBackdrop" class="menu-backdrop"></div>
+
+  <!-- CONTENT -->
+  <div class="contact-wrapper">
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>📱 WhatsApp</h3>
+        <p>Fastest way to contact us</p>
+        <a href="https://wa.me/526242426741" target="_blank">Chat Now</a>
+      </div>
+
+      <div class="contact-card">
+        <h3>📞 Phone</h3>
+        <p>Call us anytime</p>
+        <a href="tel:+526242426741">+52 624 242 6741</a>
+      </div>
+
+      <div class="contact-card">
+        <h3>📧 Email</h3>
+        <p>We respond within minutes</p>
+        <a href="mailto:ridewmecabo@gmail.com">ridewmecabo@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h2>Send Us a Message</h2>
+
+      <form id="contactForm">
+        <label>Your Name</label>
+        <input type="text" id="cname" required>
+
+        <label>Your Email</label>
+        <input type="email" id="cemail" required>
+
+        <label>Your Message</label>
+        <textarea id="cmessage" required></textarea>
+
+        <button type="submit">Send Message</button>
+
+        <div id="contactSuccess" class="contact-success">🎉 Your message has been sent!</div>
+      </form>
+    </div>
+
+    <div class="map-container">
+      <iframe 
+        src="https://www.google.com/maps?q=Los+Cabos+Baja+California+Sur&output=embed"
+        width="100%"
+        height="350"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy">
+      </iframe>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    © 2025 Ride W Me Cabo — Luxury Transportation in Los Cabos
+  </footer>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <script>
+    // MENU
+    const openBtn = document.getElementById("openMenu");
+    const closeBtn = document.getElementById("closeMenu");
+    const menu = document.getElementById("sideMenu");
+    const backdrop = document.getElementById("menuBackdrop");
+
+    if (openBtn && closeBtn && menu && backdrop) {
+      openBtn.onclick = () => {
+        menu.classList.add("open");
+        backdrop.classList.add("show");
+        document.body.style.overflow = "hidden";
+      };
+      closeBtn.onclick = () => {
+        menu.classList.remove("open");
+        backdrop.classList.remove("show");
+        document.body.style.overflow = "auto";
+      };
+      backdrop.onclick = closeBtn.onclick;
+    }
+
+    // CONTACT FORM
+    emailjs.init("Ed5Qh2Qk81A6fHcRR");
+
+    const form = document.getElementById("contactForm");
+    const successMsg = document.getElementById("contactSuccess");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const data = {
+        cname: document.getElementById("cname").value,
+        cemail: document.getElementById("cemail").value,
+        cmessage: document.getElementById("cmessage").value
+      };
+
+      emailjs.send("service_8zcytcr", "template_contact", data)
+        .then(() => {
+          successMsg.style.display = "block";
+          form.reset();
+          setTimeout(() => successMsg.style.display = "none", 3000);
+        })
+        .catch(() => {
+          alert("❌ Error sending your message. Try again.");
+        });
+    });
+  </script>
+</body>
+</html>
